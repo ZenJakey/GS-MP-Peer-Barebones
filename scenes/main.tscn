@@ -75,19 +75,18 @@ script = ExtResource("3_jyhfs")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Multiplayer_Menu_Elements"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -173.0
-offset_top = -68.0
-offset_right = 173.0
-offset_bottom = 68.0
+anchors_preset = -1
+anchor_left = 0.349826
+anchor_top = 0.341049
+anchor_right = 0.650174
+anchor_bottom = 0.658951
+offset_top = 35.0
+offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayOnline" type="Button" parent="Multiplayer_Menu_Elements/VBoxContainer"]
 layout_mode = 2
@@ -109,6 +108,10 @@ text = "Exit Lobby"
 layout_mode = 2
 text = "Back
 "
+
+[node name="Invite" type="Button" parent="Multiplayer_Menu_Elements/VBoxContainer"]
+layout_mode = 2
+text = "Invite Friends"
 
 [node name="Lobby_Member_Panel" type="Node" parent="."]
 unique_name_in_owner = true
@@ -175,5 +178,6 @@ text = "Refresh"
 [connection signal="pressed" from="Multiplayer_Menu_Elements/VBoxContainer/View Lobby List" to="Multiplayer_Menu_Elements" method="_on_view_lobby_list_pressed"]
 [connection signal="pressed" from="Multiplayer_Menu_Elements/VBoxContainer/Leave Lobby" to="Multiplayer_Menu_Elements" method="_on_leave_lobby_pressed"]
 [connection signal="pressed" from="Multiplayer_Menu_Elements/VBoxContainer/Back" to="Multiplayer_Menu_Elements" method="_on_back_pressed"]
+[connection signal="pressed" from="Multiplayer_Menu_Elements/VBoxContainer/Invite" to="Multiplayer_Menu_Elements" method="_on_invite_pressed"]
 [connection signal="pressed" from="Lobby_Browser/Control/LobbyBrowserBack" to="Lobby_Browser" method="_on_lobby_browser_back_pressed"]
 [connection signal="pressed" from="Lobby_Browser/Control/LobbyBrowserRefresh" to="Lobby_Browser" method="_on_lobby_browser_refresh_pressed"]

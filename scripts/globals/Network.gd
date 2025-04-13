@@ -16,6 +16,7 @@ func _ready():
 	multiplayer.peer_connected.connect(_peer_connected_message)
 	multiplayer.peer_disconnected.connect(_peer_disconnected_message)
 	peer.lobby_created.connect(_on_lobby_created)
+	Steam.join_requested.connect(_on_lobby_joined)
 	Steam.lobby_joined.connect(_on_lobby_joined)
 	Steam.lobby_match_list.connect(_on_lobby_match_list)
 	Steam.avatar_loaded.connect(_on_avatar_loaded)
@@ -58,6 +59,11 @@ func leave_lobby():
 		is_host = false
 		LOBBY_MEMBERS.clear()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	
+func open_invite_window():
+	if (LOBBY_ID == 0):
+		return
+	Steam.activateGameOverlayInviteDialog(Globals.STEAM_ID)
 	
 func update_lobby_list():
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)

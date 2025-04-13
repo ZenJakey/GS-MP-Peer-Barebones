@@ -40,8 +40,14 @@ func _on_view_lobby_list_pressed() -> void:
 	main.hide_children(%Multiplayer_Menu_Elements)
 	main.show_children(%Lobby_Browser)
 	Network.update_lobby_list()
-	pass # Replace with function body.
+pass # Replace with function body.
 
 
 func _on_leave_lobby_pressed() -> void:
 	Network.leave_lobby()
+
+
+func _on_invite_pressed() -> void:
+	if (Network.LOBBY_ID == 0):
+		Network.create_lobby()
+	Network.open_invite_window()
