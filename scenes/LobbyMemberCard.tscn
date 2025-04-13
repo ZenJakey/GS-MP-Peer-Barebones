@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://t4aqb3om0n5m"]
+
+[ext_resource type="Script" uid="uid://pb62xex5dkyu" path="res://scripts/main-menu/lobby_member_card.gd" id="1_lctcg"]
+[ext_resource type="Texture2D" uid="uid://fyteg8rht5pj" path="res://textures/static-images/NoProfilePic.jpg" id="1_wdagk"]
+
+[node name="LobbyMemberCard" type="Control"]
+custom_minimum_size = Vector2(93, 121)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1059.0
+offset_bottom = -527.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lctcg")
+picture = ExtResource("1_wdagk")
+
+[node name="ProfilePicture" type="Sprite2D" parent="."]
+position = Vector2(46, 46)
+texture = ExtResource("1_wdagk")
+
+[node name="Username" type="Label" parent="."]
+layout_mode = 0
+offset_top = 93.0
+offset_right = 90.0
+offset_bottom = 116.0
+text = "Username"
+horizontal_alignment = 1

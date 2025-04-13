@@ -1,0 +1,179 @@
+[gd_scene load_steps=8 format=3 uid="uid://drn0vefd6kxpt"]
+
+[ext_resource type="Script" uid="uid://m7r1ig82ws48" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://t4aqb3om0n5m" path="res://scenes/LobbyMemberCard.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://bcu134kbcaru" path="res://scripts/main-menu/main_menu_elements.gd" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://61iwtylp3h8c" path="res://scripts/main-menu/multiplayer_menu_elements.gd" id="3_jyhfs"]
+[ext_resource type="Script" path="res://scripts/lobby_member_panel.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://m0ub4hf6bskq" path="res://scripts/lobby_browser.gd" id="5_tbgi4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_0wfyh")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 460.0
+offset_top = 79.0
+offset_right = 692.0
+offset_bottom = 184.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+text = "Bottled Up"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+
+[node name="Main_Menu_Elements" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_sugp2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main_Menu_Elements"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -68.0
+offset_right = 173.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Play" type="Button" parent="Main_Menu_Elements/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Multiplayer" type="Button" parent="Main_Menu_Elements/VBoxContainer"]
+layout_mode = 2
+text = "Multiplayer"
+
+[node name="Options" type="Button" parent="Main_Menu_Elements/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="Main_Menu_Elements/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Multiplayer_Menu_Elements" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_jyhfs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Multiplayer_Menu_Elements"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = -68.0
+offset_right = 173.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PlayOnline" type="Button" parent="Multiplayer_Menu_Elements/VBoxContainer"]
+layout_mode = 2
+text = "Play Online"
+
+[node name="CreateLobby" type="Button" parent="Multiplayer_Menu_Elements/VBoxContainer"]
+layout_mode = 2
+text = "Create Lobby"
+
+[node name="View Lobby List" type="Button" parent="Multiplayer_Menu_Elements/VBoxContainer"]
+layout_mode = 2
+text = "View Open Lobbies"
+
+[node name="Leave Lobby" type="Button" parent="Multiplayer_Menu_Elements/VBoxContainer"]
+layout_mode = 2
+text = "Exit Lobby"
+
+[node name="Back" type="Button" parent="Multiplayer_Menu_Elements/VBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="Lobby_Member_Panel" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_tefeu")
+
+[node name="LobbyMemberList" type="HBoxContainer" parent="Lobby_Member_Panel"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 121.0
+grow_horizontal = 0
+
+[node name="LobbyMemberCard" parent="Lobby_Member_Panel/LobbyMemberList" instance=ExtResource("2_0wfyh")]
+layout_mode = 2
+username = "User 1"
+
+[node name="Lobby_Browser" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_tbgi4")
+
+[node name="Control" type="Control" parent="Lobby_Browser"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Lobby_Browser/Control"]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 208.0
+offset_right = 823.0
+offset_bottom = 447.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tefeu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Lobby_Browser/Control/ScrollContainer"]
+layout_mode = 2
+
+[node name="LobbyBrowserBack" type="Button" parent="Lobby_Browser/Control"]
+layout_mode = 0
+offset_left = 221.0
+offset_top = 410.0
+offset_right = 311.0
+offset_bottom = 443.0
+text = "Back"
+
+[node name="LobbyBrowserRefresh" type="Button" parent="Lobby_Browser/Control"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 211.0
+offset_right = 296.0
+offset_bottom = 242.0
+text = "Refresh"
+
+[connection signal="pressed" from="Main_Menu_Elements/VBoxContainer/Play" to="Main_Menu_Elements" method="_on_play_pressed"]
+[connection signal="pressed" from="Main_Menu_Elements/VBoxContainer/Multiplayer" to="Main_Menu_Elements" method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="Main_Menu_Elements/VBoxContainer/Quit" to="Main_Menu_Elements" method="_on_quit_pressed"]
+[connection signal="pressed" from="Multiplayer_Menu_Elements/VBoxContainer/PlayOnline" to="Multiplayer_Menu_Elements" method="_on_play_online_pressed"]
+[connection signal="pressed" from="Multiplayer_Menu_Elements/VBoxContainer/CreateLobby" to="Multiplayer_Menu_Elements" method="_on_create_lobby_pressed"]
+[connection signal="pressed" from="Multiplayer_Menu_Elements/VBoxContainer/View Lobby List" to="Multiplayer_Menu_Elements" method="_on_view_lobby_list_pressed"]
+[connection signal="pressed" from="Multiplayer_Menu_Elements/VBoxContainer/Leave Lobby" to="Multiplayer_Menu_Elements" method="_on_leave_lobby_pressed"]
+[connection signal="pressed" from="Multiplayer_Menu_Elements/VBoxContainer/Back" to="Multiplayer_Menu_Elements" method="_on_back_pressed"]
+[connection signal="pressed" from="Lobby_Browser/Control/LobbyBrowserBack" to="Lobby_Browser" method="_on_lobby_browser_back_pressed"]
+[connection signal="pressed" from="Lobby_Browser/Control/LobbyBrowserRefresh" to="Lobby_Browser" method="_on_lobby_browser_refresh_pressed"]

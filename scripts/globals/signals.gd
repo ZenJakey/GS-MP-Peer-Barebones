@@ -1,0 +1,9 @@
+extends Node
+
+signal lobby_members_updated
+signal steam_avatar_loaded
+signal lobby_list_received
+signal lobby_owner_left
+signal lobby_member_left
+
+signal spawn_level

@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://buo77tfu4bfle"]
+
+[ext_resource type="Script" uid="uid://suampysaegh8" path="res://scripts/main-menu/multiplayer_spawner.gd" id="1_u52ul"]
+[ext_resource type="PackedScene" uid="uid://4xpveu227hns" path="res://scenes/Player.tscn" id="2_vonw3"]
+[ext_resource type="Material" uid="uid://cayysilaxigma" path="res://materials/mat_dark_triplanar.tres" id="3_0b4ue"]
+[ext_resource type="Material" uid="uid://t338i7f6p0xy" path="res://materials/mat_orange_triplanar.tres" id="4_0b4ue"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0b4ue"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_f2txt"]
+sky_material = SubResource("ProceduralSkyMaterial_0b4ue")
+
+[sub_resource type="Environment" id="Environment_1ainy"]
+background_mode = 2
+sky = SubResource("Sky_f2txt")
+tonemap_mode = 2
+sdfgi_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_density = 0.005
+fog_sky_affect = 0.109
+
+[node name="Level" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1ainy")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath(".")
+script = ExtResource("1_u52ul")
+playerScene = ExtResource("2_vonw3")
+
+[node name="map" type="Node3D" parent="."]
+
+[node name="floor" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
+material_override = ExtResource("3_0b4ue")
+use_collision = true
+size = Vector3(1000, 0.01, 1000)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="map"]
+transform = Transform3D(0.722521, 0, -0.691349, 0, 1, 0, 0.691349, 0, 0.722521, -0.950378, 0.434926, -7.15606)
+material_override = ExtResource("4_0b4ue")
+use_collision = true
