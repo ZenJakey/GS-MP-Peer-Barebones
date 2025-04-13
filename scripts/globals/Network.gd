@@ -67,6 +67,7 @@ func open_invite_window():
 	
 func update_lobby_list():
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
+	Steam.addRequestLobbyListStringFilter("match_key",Globals.MATCH_KEY,Steam.LOBBY_COMPARISON_EQUAL)
 	# filter out lobbies where the current user is the host
 	Steam.addRequestLobbyListStringFilter("lobby_host", str(Globals.STEAM_ID), Steam.LOBBY_COMPARISON_NOT_EQUAL)
 	Steam.requestLobbyList()
@@ -97,6 +98,7 @@ func _on_lobby_created(result: int, lobby_id: int):
 		Steam.setLobbyData(lobby_id, "name", lobby_name)
 		Steam.setLobbyJoinable(lobby_id, true)
 		Steam.setLobbyData(lobby_id, "lobby_host", str(Globals.STEAM_ID))
+		Steam.setLobbyData(lobby_id, "match_key", str(Globals.MATCH_KEY))
 		print(lobby_id)
 		update_lobby_members()
 		
