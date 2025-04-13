@@ -10,7 +10,7 @@ var OWNED = false
 var ONLINE = false
 var STEAM_ID = 0
 var STEAM_NAME = ""
-var APP_ID = 3649010
+var APP_ID = 480
 
 func _ready() -> void:
 	var INIT = Steam.steamInitEx(APP_ID)
