@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://t4aqb3om0n5m" path="res://scenes/LobbyMemberCard.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://bcu134kbcaru" path="res://scripts/main-menu/main_menu_elements.gd" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://61iwtylp3h8c" path="res://scripts/main-menu/multiplayer_menu_elements.gd" id="3_jyhfs"]
-[ext_resource type="Script" path="res://scripts/lobby_member_panel.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://baaxjenef7vif" path="res://scripts/lobby_member_panel.gd" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://m0ub4hf6bskq" path="res://scripts/lobby_browser.gd" id="5_tbgi4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
@@ -27,7 +27,7 @@ offset_bottom = 184.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 45
-text = "Bottled Up"
+text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
